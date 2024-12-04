@@ -7,7 +7,7 @@ from flask_login import LoginManager
 db = SQLAlchemy()
 
 def create_app():
-    app = Flask(__name__, static_folder='cinema/static')
+    app = Flask(__name__)
     app.secret_key = '17052008'
     project_dir = os.path.dirname(os.path.abspath(__file__))
     cinema_file = "sqlite:///{}".format(os.path.join(project_dir, "Cinema.db"))
