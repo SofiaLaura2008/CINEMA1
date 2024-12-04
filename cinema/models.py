@@ -1,7 +1,7 @@
-from . import db
 from sqlalchemy import Column, Integer, String, ForeignKey, Date, DateTime
 from datetime import datetime
 from flask_login import UserMixin
+from . import db
 
 #Tabelas de entidades simples
 # Tabela de Usuario

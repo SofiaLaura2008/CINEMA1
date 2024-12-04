@@ -5,20 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adicionar Cinema</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/adicionar_filmes.css') }}">
+    <link rel="stylesheet" href="/static/css/adicionar_filmes.css">
 </head>
 <body>
     <div class="container">
         <h1>Adicionar alimento</h1>
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                <ul class="flash-messages">
-                    {% for category, message in messages %}
-                        <li class="{{ category }}">{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        {% endwith %}
         <form method="POST" action="{{ url_for('adicionar_alimentos') }}">
             <div class="form-group">
                 <label for="nome">Nome do Alimento</label>
