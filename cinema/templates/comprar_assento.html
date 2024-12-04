@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/adicionar_filmes.css') }}">
+    <title>Comprar Assento</title>
+</head>
+<body>
+<div class="container">
+    <h1>Comprar Assento</h1>
+    
+    {% if sessao %}
+        <form method="POST" action="{{ url_for('comprar_assento') }}">
+            <input type="text" name="titulo" value="{{ sessao.filme.titulo }}" readonly>
+            <br><br>
+            <input type="text" name="sala" value="{{ sessao.sala.numero }}" readonly>
+            <br><br>
+            <input type="text" name="assento" placeholder="Número do assento" required>
+            <br><br>
+            <button type="submit">Comprar Assento</button>
+        </form>
+        
+        <p>Sessão: {{ sessao.filme.titulo }} - Sala: {{ sessao.sala.numero }}</p>    
+
+    {% else %}
+        <p>Nenhuma sessão selecionada. Por favor, escolha uma sessão.</p>
+        <a href="{{ url_for('ver_Sessoes') }}" class="button">Voltar para as sessões disponíveis</a>
+    {% endif %}
+</div>
+</body>
+</html>

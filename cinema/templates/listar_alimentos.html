@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/adicionar_filmes.css') }}">
+
+    <title>Alimentos Disponíveis</title>
+</head>
+<body>
+    <div class="container">
+    <h1>Alimentos Disponíveis</h1>
+        <ul>
+            {% for alimento in alimentos %}
+            <li>
+                {{ alimento.nome }} - R$ {{ alimento.preco }}
+                <form method="POST" action="{{ url_for('adicionar_alimento_carrinho', alimento_id=alimento.id, carrinho_id=carrinho.id) }}>
+                    <label for="alimento_id">Alimento</label>
+                    <select name="alimento_id" id="alimento_id" required>
+                        {% for alimento in alimentos %}
+                            <option value="{{ alimento.id }}">{{ alimento.nome }}</option>
+                        {% endfor %}
+                    </select>
+                    
+                    <label for="quantidade">Quantidade</label>
+                    <input type="number" name="quantidade" id="quantidade" required>
+                
+                    <label for="preco_unitario">Preço Unitário</label>
+                    <input type="number" name="preco_unitario" id="preco_unitario" step="0.01" required>
+                
+                    <button type="submit">Adicionar ao Carrinho</button>
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
